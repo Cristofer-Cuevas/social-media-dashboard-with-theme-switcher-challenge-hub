@@ -1,38 +1,56 @@
 import Dashboard from "./Dashboard/Dashboard";
 
+import fbLogo from "./Dashboard/assets/images/icon-facebook.svg";
+import twitterLogo from "./Dashboard/assets/images/icon-twitter.svg";
+import instaLogo from "./Dashboard/assets/images/icon-instagram.svg";
+import ytlogo from "./Dashboard/assets/images/icon-youtube.svg";
+
+const logos = [{ logo: fbLogo }, { logo: twitterLogo }, { logo: instaLogo }, { logo: ytlogo }];
+
 const data = [
-  { socialMedia: "Facebook", followers: "1987", increment: "12", decrement: false },
-  { socialMedia: "Twitter", followers: "1044", increment: "99", decrement: false },
-  { socialMedia: "Instagram", followers: "11k", increment: "1099" },
-  { socialMedia: "Youtube", followers: "8239", increment: false, decrement: "144" },
+  { socialMedia: "Facebook", type: "Followers", followers: "1987", increment: "12", decrement: false },
+  { socialMedia: "Twitter", type: "Followores", followers: "1044", increment: "99", decrement: false },
+  { socialMedia: "Instagram", type: "Followers", followers: "11k", increment: "1099" },
+  { socialMedia: "Youtube", type: "Subscribers", followers: "8239", increment: false, decrement: "144" },
 ];
 
 const dailyIncomingData = [
-  { socialMedia: "Facebook", pageViews: "87", increment: "3%", decrement: false, likes: { likes: "52", increment: false, decrement: "2%" } },
+  {
+    socialMedia: "Facebook",
+    total: "87",
+    type: "Page Views",
+    increment: "3%",
+    decrement: false,
+    likes: { type: "Likes", likes: "52", increment: false, decrement: "2%" },
+  },
   {
     socialMedia: "Instagram",
-    profileViews: "52k",
+    total: "52k",
+    type: "Profile Views",
     increment: "1375%",
     decrement: false,
-    likes: { likes: "5462", increment: "2257%", decrement: false },
+    likes: { type: "Likes", likes: "5462", increment: "2257%", decrement: false },
   },
   {
     socialMedia: "Twitter",
-    retweets: 117,
+    total: 117,
+    type: "Retweets",
     increment: "303%",
     decrement: false,
-    likes: { likes: "507", increment: "553%", decrement: false },
+    likes: { type: "Likes", likes: "507", increment: "553%", decrement: false },
   },
   {
     socialMedia: "Youtube",
-    totalViews: "1407",
+    total: "1407",
+    type: "Total Views",
+    increment: "12%",
     decrement: false,
-    likes: { likes: "170", increment: false, decrement: "19%" },
+    likes: { type: "Likes", likes: "107", increment: false, decrement: "19%" },
   },
 ];
 
 function App() {
-  return <Dashboard data={data} dailyIncomingData={dailyIncomingData} />;
+  return <Dashboard data={data} dailyIncomingData={dailyIncomingData} logos={logos} />;
 }
 
 export default App;
