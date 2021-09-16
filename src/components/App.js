@@ -1,25 +1,14 @@
-import logo from './logo.svg';
-import './App.css';
+import Dashboard from "./Dashboard/Dashboard";
+
+const data = [
+  { socialMedia: "Facebook", followers: 1987, increment: 12, decrement: false },
+  { socialMedia: "Twitter", followers: 1044, increment: 99, decrement: false },
+  { socialMedia: "Instagram", followers: "11k", increment: 1099 },
+  { socialMedia: "Youtube", followers: 8239, increment: false, decrement: 144 },
+];
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  return <Dashboard />;
 }
 
 export default App;
