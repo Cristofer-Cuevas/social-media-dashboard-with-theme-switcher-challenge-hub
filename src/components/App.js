@@ -8,10 +8,10 @@ import ytlogo from "./Dashboard/assets/images/icon-youtube.svg";
 const logos = [{ logo: fbLogo }, { logo: twitterLogo }, { logo: instaLogo }, { logo: ytlogo }];
 
 const data = [
-  { socialMedia: "Facebook", type: "Followers", followers: "1987", increment: "12", decrement: false },
-  { socialMedia: "Twitter", type: "Followores", followers: "1044", increment: "99", decrement: false },
-  { socialMedia: "Instagram", type: "Followers", followers: "11k", increment: "1099" },
-  { socialMedia: "Youtube", type: "Subscribers", followers: "8239", increment: false, decrement: "144" },
+  { socialMedia: "Facebook", type: "Followers", acountName: "@nathanf", followers: "1987", increment: "12", decrement: false },
+  { socialMedia: "Twitter", type: "Followers", acountName: "@nathanf", followers: "1044", increment: "99", decrement: false },
+  { socialMedia: "Instagram", type: "Followers", acountName: "@realnathanf", followers: "11k", increment: "1099" },
+  { socialMedia: "Youtube", type: "Subscribers", acountName: "Nathan F.", followers: "8239", increment: false, decrement: "144" },
 ];
 
 const dailyIncomingData = [
