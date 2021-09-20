@@ -9,11 +9,12 @@ import decrementIcon from "./assets/images/icon-down.svg";
 
 const Dashboard = (props) => {
   const handleCheckboxClick = (e) => {
-    console.log(e.target.checked);
+    // Setting the "dark" attribute to the HTML tag so the variables inside the "html:not(.style-scope)[dark]" selector get change. Open inspect Element on the browser and then click the dark mode toggle to see what's going on.
+
     if (e.target.checked) {
       document.documentElement.setAttribute("dark", "true");
     } else {
-      document.documentElement.setAttribute(" ", " ");
+      document.documentElement.removeAttribute("dark");
     }
   };
 
