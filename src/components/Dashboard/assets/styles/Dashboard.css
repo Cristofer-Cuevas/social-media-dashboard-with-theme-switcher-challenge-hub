@@ -4,11 +4,11 @@
 
 :root {
   --body-bg-color: hsl(0, 0%, 100%);
-  --card-bg-color: hsl(227, 47%, 96%);
+  --card-bg-color: hsl(225, 100%, 98%);
   --number-color: hsl(230, 17%, 14%);
   --text-opacity-color: hsl(228, 12%, 44%);
   --toggle-bg-color: hsl(230, 22%, 74%);
-
+  --hover-card-bg-color: hsl(227, 47%, 96%);
   /* --light-theme-toggle-bg-color: hsl(230, 22%, 74%); */
 }
 
@@ -16,10 +16,11 @@
 
 html:not(.style-scope)[dark] {
   --body-bg-color: hsl(230, 17%, 14%);
-  --card-bg-color: hsl(228, 28%, 20%);
+  --card-bg-color: hsl(232, 19%, 15%);
   --number-color: hsl(0, 0%, 100%);
   --text-opacity-color: hsl(228, 34%, 66%);
   --toggle-bg-color: linear-gradient(to left, hsl(210, 78%, 56%), hsl(146, 68%, 55%));
+  --hover-card-bg-color: hsl(228, 28%, 20%);
 }
 
 html {
@@ -178,6 +179,11 @@ input:checked + .slider:before {
   padding-bottom: 1.4rem;
 }
 
+.boxesContainer > *:hover {
+  background-color: var(--hover-card-bg-color);
+  cursor: pointer;
+}
+
 /* GIVING EACH BOX A BORDER COLOR */
 .boxFacebookContainer {
   border-top: 4px solid hsl(208, 92%, 53%);
@@ -299,6 +305,15 @@ input:checked + .slider:before {
   background-color: var(--card-bg-color);
   border-radius: 0.3rem;
 }
+
+.boxFacebookDailyDataContainer > *:hover,
+.boxInstagramDailyDataContainer > *:hover,
+.boxTwitterDailyDataContainer > *:hover,
+.boxYoutubeDailyDataContainer > *:hover {
+  background-color: var(--hover-card-bg-color);
+  cursor: pointer;
+}
+
 /* FINISHED */
 
 /* CHANGING ORDERS */
