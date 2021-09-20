@@ -43,8 +43,8 @@ const dailyIncomingData = [
     socialMedia: "Youtube",
     total: "1407",
     type: "Total Views",
-    increment: "12%",
-    decrement: false,
+    increment: false,
+    decrement: "12%",
     likes: { type: "Likes", likes: "107", increment: false, decrement: "19%" },
   },
 ];

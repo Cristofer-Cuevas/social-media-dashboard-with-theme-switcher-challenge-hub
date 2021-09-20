@@ -1,8 +1,22 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap");
 
-/* Toggle color */
+:root {
+  --body-bg-color: hsl(0, 0%, 100%);
+  --card-bg-color: hsl(227, 47%, 96%);
+  --number-color: hsl(230, 17%, 14%);
+  --text-opacity-color: hsl(228, 12%, 44%);
+  --toggle-bg-color: hsl(230, 22%, 74%);
 
-/* - Toggle: linear gradient hsl(210, 78%, 56%) to hsl(146, 68%, 55%) */
+  /* --light-theme-toggle-bg-color: hsl(230, 22%, 74%); */
+}
+
+html:not(.style-scope)[dark] {
+  --body-bg-color: hsl(230, 17%, 14%);
+  --card-bg-color: hsl(228, 28%, 20%);
+  --number-color: hsl(0, 0%, 100%);
+  --text-opacity-color: hsl(228, 34%, 66%);
+  --toggle-bg-color: linear-gradient(to left, hsl(210, 78%, 56%), hsl(146, 68%, 55%));
+}
 
 html {
   width: 100%;
@@ -10,6 +24,7 @@ html {
 }
 
 body {
+  background-color: var(--body-bg-color);
   font-family: Inter;
   width: 100%;
   height: 100%;
@@ -21,17 +36,70 @@ body {
   justify-content: center;
   align-items: center;
   width: 100%;
+
   height: auto;
+}
+
+/* The switch - the box around the slider */
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 55px;
+  height: 25px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  background: var(--toggle-bg-color);
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 4px;
+  bottom: 0.25rem;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
 }
 
 .headerContainer {
-  margin-top: 25px;
+  margin-top: 2rem;
   width: 90%;
   height: auto;
 }
 
-.title {
+.heading {
   width: 90%;
+}
+
+.title {
+  color: var(--number-color);
   font-weight: 700;
   font-size: 1.5rem;
 }
@@ -40,23 +108,29 @@ body {
   width: 90%;
   font-weight: 700;
   font-size: 0.9rem;
-  color: hsla(0, 0%, 0%, 0.5);
+  color: var(--text-opacity-color);
   margin-top: -0.6rem;
+  margin-bottom: 1.5rem;
 }
 
 .darkModeContainer {
   border-top: 1px solid black;
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 3rem;
 }
 
 .darkMode {
   font-size: 0.9rem;
-  color: hsla(0, 0%, 0%, 0.5);
+  color: var(--text-opacity-color);
   font-weight: 700;
 }
 
 .mainContainer {
   width: 100%;
+  height: 45rem;
   display: flex;
   justify-content: center;
 }
@@ -64,6 +138,7 @@ body {
 .articleContainer {
   width: 90%;
   height: auto;
+  margin-top: 2rem;
 }
 
 .sectionFollowerBoxes {
@@ -81,12 +156,14 @@ body {
 }
 
 .boxesContainer > * {
-  background-color: hsl(227, 47%, 96%);
+  background-color: var(--card-bg-color);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   border-radius: 0.3rem;
+
+  padding-bottom: 1.4rem;
 }
 
 /* FACEBOOX BOX */
@@ -95,46 +172,32 @@ body {
   border-top: 4px solid hsl(208, 92%, 53%);
 }
 
-.iconFacebook {
-  /* background-color: white; */
-  background-image: url("../images/icon-facebook.svg");
-}
-
-.numberFollowers {
-  font-size: 3rem;
-  padding: 0;
-  margin: 0;
-  font-weight: 700;
-}
-
-.followers {
-  margin-top: 0;
-  padding-top: 0;
-  color: hsla(0, 0%, 0%, 0.5);
-  font-weight: 400;
-  font-size: 0.9rem;
-  letter-spacing: 0.3rem;
-}
-.boxTwitterContainer {
-  border-top: 4px solid hsl(203, 89%, 53%);
-}
-
 .boxInstagramContainer {
   background-image: linear-gradient(to right, hsl(37, 97%, 70%), hsl(329, 70%, 58%));
   background-repeat: no-repeat;
   background-size: 100% 4px;
 }
 
+.boxTwitterContainer {
+  border-top: 4px solid hsl(203, 89%, 53%);
+}
+
 .boxYoutubeContainer {
   border-top: 4px solid hsl(348, 97%, 39%);
+}
+
+.iconFacebook {
+  background-image: url("../images/icon-facebook.svg");
 }
 
 .iconFacebook,
 .iconTwitter,
 .iconInstagram,
 .iconYoutube {
+  color: var(--text-opacity-color);
   width: 6.5rem;
   height: 1.3rem;
+  margin: 1.8rem 0 1.5rem 0;
   text-align: end;
   background-repeat: no-repeat;
 }
@@ -152,9 +215,29 @@ body {
   background-image: url("../images/icon-youtube.svg");
 }
 
+.numberFollowers {
+  color: var(--number-color);
+  font-size: 3rem;
+  padding: 0;
+  margin: 0;
+  font-weight: 700;
+}
+
+.followers {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  padding-top: 0;
+
+  color: var(--text-opacity-color);
+  font-weight: 400;
+  font-size: 0.9rem;
+  letter-spacing: 0.3rem;
+}
+
 /* BOXES DAILY DATA */
 
 .sectionBoxesDailyData {
+  margin-top: 2rem;
   width: 100%;
   height: auto;
 }
@@ -168,64 +251,153 @@ body {
 }
 
 .overviewTitle {
+  color: var(--text-opacity-color);
   grid-column: 1/-1;
-}
-
-.boxFacebookDailyDataContainer,
-.boxYoutubeDailyDataContainer,
-.boxTwitterDailyDataContainer,
-.boxInstagramDailyDataContainer {
-  /* display: flex; */
-  flex-wrap: wrap;
-  width: 100%;
-  grid-column: span 2;
 }
 
 .boxFacebookDailyDataContainer,
 .boxInstagramDailyDataContainer,
 .boxTwitterDailyDataContainer,
 .boxYoutubeDailyDataContainer {
+  width: 100%;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
   grid-template-rows: repeat(auto-fit, minmax(auto, auto));
+  grid-column: span 2;
   gap: 1rem;
 }
 
 /* FACEBOOK BOX */
 
-.boxFacebookDailyDataContainer > * {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: hsl(227, 47%, 96%);
-}
-
-/* INSTAGRAM BOX */
-
-.boxInstagramDailyDataContainer > * {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: hsl(227, 47%, 96%);
-}
-
-/* TWITTER BOX */
-
-.boxTwitterDailyDataContainer > * {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: hsl(227, 47%, 96%);
-}
-
-/* YOUTUBE BOX */
-
+.boxFacebookDailyDataContainer > *,
+.boxInstagramDailyDataContainer > *,
+.boxTwitterDailyDataContainer > *,
 .boxYoutubeDailyDataContainer > * {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: hsl(227, 47%, 96%);
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 1.3rem 1.5rem;
+  background-color: var(--card-bg-color);
+  border-radius: 0.3rem;
 }
 
-.FacebooxFirstBox {
+.InstagramSecondBox {
+  order: -1;
+}
+
+.YoutubeSecondBox {
+  order: -1;
+}
+
+.FacebookType {
+  background-image: url("../images/icon-facebook.svg");
+}
+
+.InstagramType {
+  background-image: url("../images/icon-instagram.svg");
+}
+
+.TwitterType {
+  background-image: url("../images/icon-twitter.svg");
+}
+
+.YoutubeType {
+  background-image: url("../images/icon-youtube.svg");
+}
+
+.InstagramType,
+.FacebookType,
+.TwitterType,
+.YoutubeType {
+  background-repeat: no-repeat;
+  background-position: right;
+  height: 1.3rem;
+}
+
+/* COMMON STYLES AMONG ALL DAILY DATA, FIRST AND SECOND BOX */
+
+.FacebookType,
+.InstagramType,
+.TwitterType,
+.YoutubeType {
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--text-opacity-color);
+  width: 100%;
+  margin: 0;
+}
+
+.total,
+.likes {
+  padding: 0;
+  margin-top: 1.5rem;
+  margin-bottom: 0;
+  font-weight: 700;
+  font-size: 2rem;
+}
+
+/* INCREMENT AND DECREMENT STYLES  */
+
+.totalIncrement,
+.totalDecrement,
+.likesIncrement,
+.likesDecrement {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: hsl(163, 72%, 41%);
+  padding: 0;
+  margin: 0;
+  text-align: end;
+}
+
+.iconUp,
+.iconDown {
+  padding: 0 0.2rem 5% 0;
+}
+
+.totalDecrement {
+  color: hsl(356, 69%, 56%);
+}
+
+.likesDecrement {
+  color: hsl(356, 69%, 56%);
+}
+
+@media screen and (min-width: 990px) {
+  #root {
+    width: auto;
+  }
+
+  .headerContainer {
+    width: 77%;
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .darkModeContainer {
+    border: none;
+    width: 15rem;
+  }
+
+  .mainContainer {
+    width: 85%;
+  }
+
+  .boxesContainer {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .boxesDailyDataContainer {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .boxFacebookDailyDataContainer,
+  .boxInstagramDailyDataContainer,
+  .boxTwitterDailyDataContainer,
+  .boxYoutubeDailyDataContainer {
+    grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+  }
 }
